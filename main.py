@@ -1,5 +1,8 @@
-from Day1 import day1_1, day1_2
+from imports import *
+import Tools
+
 
 if __name__ == '__main__':
-    day1_1.execution()
-    day1_2.execution()
+    todays_date = Tools.get_todays_date()
+    exec("day{}_1.execution()".format(todays_date))
+    exec("day{}_2.execution()".format(todays_date))
