@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 
@@ -45,6 +46,6 @@ def execution():
                 co2_numbers = remove_number(co2_numbers, i, "1")
 
     answer = int(co2_numbers[0],2)*int(oxygen_numbers[0], 2)
-    print("Answer to day3 task two is: {}".format(answer))
+    print("Answer to day {} task one is: {}".format(day, answer))
 
 

@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 
@@ -25,5 +26,5 @@ def execution():
         if direction[i] == "forward":
             horizontal += stepsize[i]
             depth += aim*stepsize[i]
-    print(horizontal*depth)
+    print("Answer to day {} task one is: {}".format(day, horizontal*depth))
 

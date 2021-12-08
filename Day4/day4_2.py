@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 checkmark = "X"
@@ -13,8 +14,7 @@ def read_input_file():
     board_number = 0
     for line in temp:
         if line !="":
-            temp_line = line.split(" ")
-            temp_line = list(map(int,filter(None, temp_line)))
+            temp_line = list(map(int, line.split()))
             try:
                 boards[board_number].append(temp_line)
             except:
@@ -57,6 +57,6 @@ def execution():
             if check_board(board):
                 boards_won[board_number] = calculate_board(board, number)
     print(boards_won)
-    print("Answer to day1 task two is: {}".format(boards_won[list(boards_won.keys())[-1]]))
+    print("Answer to day {} task one is: {}".format(day, boards_won[list(boards_won.keys())[-1]]))
 
 

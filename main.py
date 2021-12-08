@@ -4,6 +4,7 @@ import os
 
 
 if __name__ == '__main__':
+    print(os.path.dirname(__file__))
     todays_date = Tools.get_todays_date()
     Tools.insert_data(todays_date)
     exec("day{}_1.execution()".format(todays_date))

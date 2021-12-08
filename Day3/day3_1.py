@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 def convert_to_binary_numbers(input_full):
@@ -27,4 +28,4 @@ def execution():
             gamma+="0"
             epsilon+="1"
     answer = int(gamma,2)*int(epsilon,2)
-    print("Answer to day3 task one is: {}".format(answer))
+    print("Answer to day {} task one is: {}".format(day, answer))
