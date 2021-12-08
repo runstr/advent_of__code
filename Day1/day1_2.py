@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"input_input.txt"
 
@@ -13,5 +14,5 @@ def execution():
         if sum_now > prev_sum:
             bigger += 1
         prev_sum = sum_now
-    print("Answer to day1 task two is: {}".format(bigger))
+    print("Answer to day {} task one is: {}".format(day, bigger))
 

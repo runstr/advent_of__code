@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 
@@ -12,4 +13,4 @@ def execution():
         if i > prev:
             bigger += 1
         prev = i
-    print("Answer to day1 task one is: {}".format(bigger))
+    print("Answer to day {} task one is: {}".format(day, bigger))

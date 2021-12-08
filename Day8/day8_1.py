@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 
@@ -22,4 +23,4 @@ def execution():
             if len(number) in numbers:
                 total_numbers += 1
 
-    print("Answer to day 8 task one is: {}".format(total_numbers))
+    print("Answer to day {} task one is: {}".format(day,total_numbers))

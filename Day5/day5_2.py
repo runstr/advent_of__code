@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 
@@ -60,6 +61,6 @@ def execution():
     answer = check_map(full_map)
     #for line in full_map:
     #    print(line)
-    print("Answer to day2 task two is: {}".format(answer))
+    print("Answer to day {} task one is: {}".format(day, answer))
 
 

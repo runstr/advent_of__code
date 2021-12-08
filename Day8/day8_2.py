@@ -1,5 +1,6 @@
 import Tools
-
+import os
+day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 numbers_mapping = {0: "", 1: "", 2: "", 3: "", 4: "", 5: "", 6:  "", 7: "", 8: "", 9: ""}
@@ -81,4 +82,4 @@ def execution():
         find_mapping(inputs[i])
         numbers.append(find_number(numbers_mapping, outputs[i]))
 
-    print("Answer to day 8 task two is: {}".format(sum(numbers)))
+    print("Answer to day {} task two is: {}".format(day, sum(numbers)))
