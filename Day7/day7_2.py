@@ -1,17 +1,22 @@
 import Tools
 
 input_filename = __file__[:-9]+"input.txt"
-test_input1_filename = __file__[:-9]+"input_input.txt"
+test_input1_filename = __file__[:-9]+"test_input.txt"
 
 
 def execution():
-    input_full = list(map(int, Tools.read_input_as_line(input_filename)))
-    prev_sum = input_full[0]+input_full[1]+input_full[2]
-    bigger = 0
-    for i in range(3, len(input_full)):
-        sum_now = input_full[i-2]+input_full[i-1]+input_full[i]
-        if sum_now > prev_sum:
-            bigger += 1
-        prev_sum = sum_now
-    print("Answer to day1 task two is: {}".format(bigger))
+    input_full = list(map(int, Tools.read_input_as_line(input_filename)[0].split(",")))
+    fuel_dict = {}
+    for i in range(0, max(input_full)):
+        fuel = 0
+        for position in input_full:
+            fuel+=sum(range(abs(position-i)+1))
+
+        fuel_dict[i]=fuel
+    min(list(fuel_dict.values()))
+    answer = min(list(fuel_dict.values()))
+
+    print(fuel_dict)
+
+    print("Answer to day7 task one is: {}".format(answer))
 

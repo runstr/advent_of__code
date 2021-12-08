@@ -5,11 +5,17 @@ test_input1_filename = __file__[:-9]+"test_input.txt"
 
 
 def execution():
-    input_full = Tools.read_input_as_line(input_filename)
-    bigger=0
-    prev = 1000000000
-    for i in input_full:
-        if i > prev:
-            bigger += 1
-        prev = i
-    print("Answer to day1 task one is: {}".format(bigger))
+    input_full = list(map(int, Tools.read_input_as_line(input_filename)[0].split(",")))
+    fuel_dict = {}
+    for i in range(0, max(input_full)):
+        fuel = 0
+        for position in input_full:
+            fuel+=abs(position-i)
+
+        fuel_dict[i]=fuel
+    min(list(fuel_dict.values()))
+    answer = min(list(fuel_dict.values()))
+
+    print(fuel_dict)
+
+    print("Answer to day7 task one is: {}".format(answer))
