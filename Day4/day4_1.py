@@ -3,6 +3,7 @@ import Tools
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
 checkmark = "X"
+
 def read_input_file():
     input_full = Tools.read_full_input(input_filename)
     temp = input_full.split("\n")
@@ -13,8 +14,7 @@ def read_input_file():
     board_number = 0
     for line in temp:
         if line !="":
-            temp_line = line.split(" ")
-            temp_line = list(map(int,filter(None, temp_line)))
+            temp_line = list(map(int, line.split()))
             try:
                 boards[board_number].append(temp_line)
             except:

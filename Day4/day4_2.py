@@ -13,8 +13,7 @@ def read_input_file():
     board_number = 0
     for line in temp:
         if line !="":
-            temp_line = line.split(" ")
-            temp_line = list(map(int,filter(None, temp_line)))
+            temp_line = list(map(int, line.split()))
             try:
                 boards[board_number].append(temp_line)
             except:
