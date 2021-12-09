@@ -1,5 +1,6 @@
 import Tools
 import os
+import time
 day = os.path.dirname(__file__)[-1:]
 input_filename = __file__[:-9]+"input.txt"
 test_input1_filename = __file__[:-9]+"test_input.txt"
@@ -7,64 +8,25 @@ test_input1_filename = __file__[:-9]+"test_input.txt"
 
 def execution():
     input_full = Tools.read_input_as_line(input_filename)
-    input_full[4]
-    print(len(input_full))
-    print(len(input_full[0]))
+    t_before = time.time()
     risk_level = 0
-    corners = 0
     low_point = []
     for j in range(0, len(input_full)):
         for i in range(0, len(input_full[0])):
-            if j==0: 
-                if i==0:
-                    if int(input_full[0][0])<int(input_full[1][0]) and int(input_full[0][0])<int(input_full[0][1]):
-                        low_point.append([j, i])
-                        risk_level+=(int(int(input_full[j][i]))+1)
-                elif i == len(input_full[0])-1:
-                    if int(input_full[0][i])<int(input_full[1][i]) and int(input_full[0][i])<int(input_full[0][i-1]):
-                        low_point.append([j, i])
-                        risk_level+=(int(int(input_full[j][i]))+1)
-                else:
-                    if int(input_full[0][i])<int(input_full[0][i-1]) and int(input_full[0][i])<int(input_full[0][i+1]) and int(input_full[0][i])<int(input_full[1][i]):
-                        low_point.append([j, i])
-                        risk_level+=(int(int(input_full[j][i]))+1)
-
-            elif i == 0:
-                if j == len(input_full)-1:
-                    if int(input_full[j][0])<int(input_full[j-1][0]) and int(input_full[j][0])<int(input_full[j][1]):
-                        low_point.append([j, i])
-                        risk_level+=(int(int(input_full[j][i]))+1)
-                else:
-                    if int(input_full[j][0])<int(input_full[j-1][0]) and int(input_full[j][0])<int(input_full[j+1][0]) and int(input_full[j][0])<int(input_full[j][1]):
-                        low_point.append([j, i])
-                        risk_level+=(int(int(input_full[j][i]))+1)
-
-
-            elif i == len(input_full[0])-1:
-                if j == len(input_full)-1:
-                    if int(input_full[j][i])<int(input_full[j-1][i]) and int(input_full[j][i])<int(input_full[j][i-1]):
-                        low_point.append([j, i])
-                        risk_level+=(int(int(input_full[j][i]))+1)
-                else:
-                    if int(input_full[j][i])<int(input_full[j-1][i]) and int(input_full[j][i])<int(input_full[j+1][i]) and int(input_full[j][i])<int(input_full[j][i-1]):
-                        low_point.append([j, i])
-                        risk_level+=(int(int(input_full[j][i]))+1)
-
-
-            elif j == len(input_full)-1:
-                if int(input_full[j][i])<int(input_full[j][i-1]) and int(input_full[j][i])<int(input_full[j][i+1]) and int(input_full[j][i])<int(input_full[j-1][i]):
-                    low_point.append([j, i])
-                    risk_level+=(int(int(input_full[j][i]))+1)
-
-
-            else:
+            low_point_bool = True
+            for dx, dy in [[-1, 0], [0, -1], [1, 0], [0, 1]]:
                 try:
-                    if (int(input_full[j][i])<int(input_full[j-1][i]) and int(input_full[j][i])<int(input_full[j+1][i]) and
-                        int(input_full[j][i])<int(input_full[j][i-1]) and int(input_full[j][i])<int(input_full[j][i+1])):
-                        low_point.append([j,i])
-                        risk_level += (int(int(input_full[j][i])) + 1)
-                except IndexError as e:
-                    print(j, "  " , i)
-                    raise e
-    print(low_point)
+                    if j + dy < 0 or j + dx < 0:
+                        continue
+                    if int(input_full[j][i]) >= int(input_full[j + dy][i + dx]):
+                        low_point_bool = False
+                    else:
+                        continue
+                except IndexError:
+                    continue
+            if low_point_bool:
+                low_point.append([j, i])
+                risk_level += (int(int(input_full[j][i])) + 1)
+    t_after = time.time()
     print("Answer to day {} task one is: {}".format(day, risk_level))
+    print("Time of code 1 =  {}".format(t_after-t_before))
