@@ -71,4 +71,3 @@ def execution():
 
     print("Answer to day {} task one is: {}".format(day, sorted_basin_lengths[-1]*sorted_basin_lengths[-2]*sorted_basin_lengths[-3]))
     print("Time of code 2 =  {}".format(time_after-time_before))
-
