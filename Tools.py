@@ -17,6 +17,16 @@ def read_input_as_line(filename):
     with open(filename, 'r') as file:
         return file.read().splitlines()
 
+def read_input_as_int(filename):
+    input_full = []
+    with open(filename, 'r') as file:
+        for input_line in file.read().splitlines():
+            input_line_list = []
+            for i in input_line:
+                input_line_list.append(int(i))
+            input_full.append(input_line_list)
+
+        return input_full
 
 def get_todays_date():
     return str(date.today().day)
